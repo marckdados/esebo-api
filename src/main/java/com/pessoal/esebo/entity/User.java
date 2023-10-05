@@ -1,10 +1,14 @@
 package com.pessoal.esebo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 @Entity(name = "tb_user")
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,24 +19,8 @@ public class User {
     private String email;
     @Column(nullable = false, length = 50)
     private String password;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Book> books;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<SaleListing> saleListings;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<TradeListing> tradeListings;
-
-    public User() {
-    }
-    public User(Long id, String username, String email, String password, List<Book> books, List<SaleListing> saleListings, List<TradeListing> tradeListings) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.books = books;
-        this.saleListings = saleListings;
-        this.tradeListings = tradeListings;
-    }
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Trade> trades;
     public Long getId() {
         return id;
     }
@@ -65,28 +53,12 @@ public class User {
         this.password = password;
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public List<Trade> getTrades() {
+        return trades;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
-
-    public List<SaleListing> getSaleListings() {
-        return saleListings;
-    }
-
-    public void setSaleListings(List<SaleListing> saleListings) {
-        this.saleListings = saleListings;
-    }
-
-    public List<TradeListing> getTradeListings() {
-        return tradeListings;
-    }
-
-    public void setTradeListings(List<TradeListing> tradeListings) {
-        this.tradeListings = tradeListings;
+    public void setTrades(List<Trade> trades) {
+        this.trades = trades;
     }
 
     @Override
