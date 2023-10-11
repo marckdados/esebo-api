@@ -4,9 +4,7 @@ import com.pessoal.esebo.entity.Trade;
 import com.pessoal.esebo.entity.User;
 import com.pessoal.esebo.repository.TradeRepository;
 import com.pessoal.esebo.repository.UserRepository;
-import com.pessoal.esebo.utils.handler.CustomException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
