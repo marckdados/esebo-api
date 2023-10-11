@@ -1,6 +1,7 @@
 package com.pessoal.esebo.controller;
 
 import com.pessoal.esebo.entity.Sale;
+import com.pessoal.esebo.entity.Trade;
 import com.pessoal.esebo.service.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,8 +22,8 @@ public class SaleController {
     }
 
     @PostMapping("/save/{id}")
-    public ResponseEntity createSale(@PathVariable("id") Long userId, @RequestBody Sale saleToCreate){
-        saleService.createSale(userId, saleToCreate);
+    public ResponseEntity createSale(@PathVariable("id") Long userId, @RequestBody Sale sale){
+        saleService.createSale(userId, sale);
         return ResponseEntity.status(HttpStatus.CREATED).body("Venda criada com sucesso !");
     }
 }
