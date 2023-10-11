@@ -3,6 +3,8 @@ package com.pessoal.esebo.controller;
 import com.pessoal.esebo.entity.Trade;
 import com.pessoal.esebo.service.TradeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,11 +16,13 @@ public class TradeController {
     private TradeService tradeService;
 
     @PostMapping(value = "/save/{id}")
-    public void createTrade(@PathVariable("id") Long userId,@RequestBody Trade trade){
+    public ResponseEntity createTrade(@PathVariable("id") Long userId, @RequestBody Trade trade){
         tradeService.createTrade(userId, trade);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Troca criada com sucesso !");
     }
     @GetMapping("find-all")
-    public List<Trade> findAllTrades(){
-        return tradeService.findAllTrades();
+    public ResponseEntity<List<Trade>> findAllTrades(){
+        List<Trade> trades = tradeService.findAllTrades();
+        return ResponseEntity.status(HttpStatus.OK).body(trades);
     }
 }

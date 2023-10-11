@@ -2,15 +2,12 @@ package com.pessoal.esebo.controller;
 
 import com.pessoal.esebo.entity.User;
 import com.pessoal.esebo.service.UserService;
-import com.pessoal.esebo.utils.handler.CustomException;
-import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController

@@ -21,6 +21,8 @@ public class User {
     private String password;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Trade> trades;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Sale> sales;
     public Long getId() {
         return id;
     }
